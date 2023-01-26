@@ -3,7 +3,7 @@
 ![badge](https://img.shields.io/badge/Made%20with-React-brightgreen?logo=react)
 ![badge](https://img.shields.io/badge/Made%20with-Symfony-brightgreen?logo=symfony)
 ![badge](https://img.shields.io/badge/Open-Source-brightgreen?logo=github)
-![badge](https://img.shields.io/badge/Fancy-Style-brightgreen?logo=less)
+![badge](https://img.shields.io/badge/Fancy-Style-brightgreen?logo=sass)
 [![badge](https://img.shields.io/badge/Enhanced%20with-badges-brightgreen?logo=shieldsdotio)](https://shields.io/)
 
 My personal portfolio which features resume my skills as programmer.

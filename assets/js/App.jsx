@@ -2,6 +2,8 @@ import React, {Suspense} from "react";
 import {Link} from "react-router-dom";
 import { Outlet } from 'react-router-dom';
 
+import '../styles/styles.scss';
+
 export default class App extends React.Component {
     render() {
         return (<>
