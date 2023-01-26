@@ -22,6 +22,13 @@ Please give me proper credit by linking back to this [repo](https://github.com/B
 ## Features
 ![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
 ## Prerequisites
+A basic knowledge of React and Object oriented programming with PHP will help you get the best out of this article.
+
+Do ensure that you have installed on your system:
+- [Composer](https://getcomposer.org/), recommended version 2.5.1
+- [PHP](https://www.php.net/), at least version 8.1 or greater, recommended 8.2.1
+
+
 ![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
 ## Getting Started
 ![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
