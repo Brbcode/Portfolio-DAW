@@ -27,7 +27,8 @@ A basic knowledge of React and Object oriented programming with PHP will help yo
 Do ensure that you have installed on your system:
 - [Composer](https://getcomposer.org/), recommended version 2.5.1
 - [PHP](https://www.php.net/), at least version 8.1 or greater, recommended 8.2.1
-
+- [Yarn package manager](https://yarnpkg.com/), recommended version 1.22.19
+- [Node.js](https://nodejs.org/en/), recommended version 16.19.0
 
 ![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
 ## Getting Started
