@@ -8,7 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    #[Route('/', name: 'app_default')]
+    const ROUTES = [
+        '/',
+        '/route1',
+        '/route2',
+    ];
+
+    #[Route(self::ROUTES, name: 'app_default')]
     public function index(): Response
     {
         return $this->render('base.html.twig', [
