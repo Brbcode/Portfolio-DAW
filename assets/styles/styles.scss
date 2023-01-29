@@ -1,3 +1,12 @@
-body{
-  background: lightblue;
+@import 'reset';
+@import 'theme';
+@import 'mixins';
+
+@include theme;
+
+html{
+  color: theme_var('primary-font-color');
+  background: repeat url('../images/background.gif'), linear-gradient(270deg,#1b1429,#140f23);
+  background-blend-mode: screen;
 }
+

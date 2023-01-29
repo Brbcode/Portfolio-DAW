@@ -1,0 +1,40 @@
+.burger-button{
+  position: relative;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+
+  path.line{
+    $t: 600ms;
+    $easing: cubic-bezier(0.4, 0, 0.2, 1);
+    fill: none;
+    stroke: #fff;
+    stroke-width: 12;
+    stroke-linecap: round;
+    transition: stroke $t, stroke-dasharray $t $easing,stroke-dashoffset $t $easing;
+
+    &.line1, &.line3{
+      stroke-dasharray: 60 207;
+    }
+
+    &.line2{
+      stroke-dasharray: 60 60;
+    }
+  }
+
+  &.active{
+    path.line{
+      stroke: #d4e4fe;
+
+      &.line1, &.line3{
+        stroke-dasharray: 90 207;
+        stroke-dashoffset: -134;
+      }
+
+      &.line2{
+        stroke-dasharray: 1 60;
+        stroke-dashoffset: -30;
+      }
+    }
+  }
+}

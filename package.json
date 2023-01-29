@@ -6,14 +6,22 @@
         "@hotwired/stimulus": "^3.0.0",
         "@symfony/stimulus-bridge": "^3.2.0",
         "@symfony/webpack-encore": "^4.0.0",
+        "autoprefixer": "^10.4.13",
         "babel-preset-react": "^6.24.1",
         "core-js": "^3.23.0",
+        "file-loader": "^6.0.0",
+        "postcss": "^8.4.21",
+        "postcss-loader": "^7.0.0",
         "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.57.1",
         "sass-loader": "^13.0.0",
+        "stylelint": "^14.16.1",
+        "stylelint-config-recommended-scss": "^8.0.0",
+        "stylelint-order": "^6.0.1",
+        "stylelint-scss": "^4.3.0",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
         "webpack-notifier": "^1.15.0"
@@ -27,6 +35,14 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.2.1",
+        "@fortawesome/free-solid-svg-icons": "^6.2.1",
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "classnames": "^2.3.2",
+        "react-inlinesvg": "^3.0.1",
         "react-router-dom": "^6.7.0"
-    }
+    },
+    "browserslist": [
+        "defaults"
+    ]
 }

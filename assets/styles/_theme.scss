@@ -1,0 +1,93 @@
+$breakpoints: (
+  'phone':        400px,
+  'phone-wide':   480px,
+  'phablet':      560px,
+  'tablet-small': 640px,
+  'tablet':       768px,
+  'tablet-wide':  1024px,
+  'desktop':      1248px,
+  'desktop-wide': 1440px
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and ( #{$type}-width: $width ) {
+      @content;
+    }
+  }
+}
+
+$theme-layers: (
+  'modal',
+  'site-header',
+  'site-main',
+  'site-footer'
+);
+
+@function z($name) {
+  @if index($theme-layers, $name) {
+    @return (length($theme-layers) - index($theme-layers, $name)) + 1;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; choose one of: #{$theme-layers}';
+    @return null;
+  }
+}
+
+//noinspection CssUnknownTarget,Stylelint
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300&display=swap');
+
+$theme-fonts: (
+  'default': "'Roboto', sans-serif"
+);
+
+@function t-font($name){
+  @if (not map-has-key($theme-fonts, $name )){
+    @error 'Theme font "#{$name}" is not defined.';
+  }
+  @return #{map-get($theme-fonts, 'default')};
+}
+
+@mixin theme-font($name) {
+  font-family: t-font($name);
+}
+
+$theme-vars: (
+  'header-height': 74px,
+  'footer-height': 45px,
+  'body-color': #212529,
+  'primary-color': #1b1a2e,
+  'active-color': #d4e4fe,
+  'active-text-color': #181a27,
+  'primary-font-color': #fff,
+  'primary-em-font-color': #be50f4,
+);
+
+@function theme_var($name,$raw: false){
+  @if not map-has-key($theme-vars ,  $name ){
+    @error 'Theme var '$name' not exist.';
+  }
+  @if ($raw){
+    @return map-get($theme-vars ,  $name );
+  }
+  @else{
+    @return var(--#{$name});
+  }
+}
+
+@mixin theme{
+
+  @if (map-has-key($theme-fonts,'default')){
+    *{
+      @include theme-font('default');
+    }
+  }
+
+  :root{
+    @each $name,$value in $theme-vars {
+      --#{$name}: #{$value};
+    }
+  }
+}
