@@ -13,6 +13,15 @@ Encore
     .setPublicPath('/build')
     // only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
+    // Copy favicon resource
+    .copyFiles({
+        from: './assets/images/favicon',
+        to: 'images/favicon/[name].[ext]'
+    })
+    .configureFilenames({
+      js: 'js/[name].[contenthash].js',
+      css: 'css/[name].[contenthash].css'
+    })
 
     /*
      * ENTRY CONFIG
@@ -58,6 +67,12 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    // enables css post-processing
+    .enablePostCssLoader((options)=>{
+        options.postcssOptions = {
+            config: './postcss.config.js'
+        }
+    })
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

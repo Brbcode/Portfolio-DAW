@@ -3,10 +3,12 @@ import {Link} from "react-router-dom";
 import { Outlet } from 'react-router-dom';
 
 import '../styles/styles.scss';
+import Header from "./Components/Header/Header";
 
 export default class App extends React.Component {
     render() {
         return (<>
+                <Header />
                 <h1>Hello World!!</h1>
                 <hr />
                     <ul>

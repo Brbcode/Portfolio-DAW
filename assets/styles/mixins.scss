@@ -1,0 +1,23 @@
+@mixin margin-auto($direction: horizontal){
+  @if $direction == horizontal {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @else if $direction == vertical {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  @else{
+    @error 'margin-auto has been passed an invalid argument: #{$direction}, choose {horizontal, vertical}';
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  position: $pos;
+  display: $display;
+  content: $content;
+}
+
+@mixin rounded($radius: 0.5em) {
+  border-radius: $radius;
+}

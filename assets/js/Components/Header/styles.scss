@@ -1,0 +1,65 @@
+@import '../../../styles/theme';
+
+#root{
+  header{
+    font-size: 1.4rem;
+    position: fixed;
+    z-index: z('site-header');
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: theme_var('header-height');
+    padding: 0.5em 2em;
+    background: theme_var('primary-color');
+
+    .logo-link{
+      height: 100%;
+
+      .logo{
+        height: 100%;
+
+        &:hover{
+          .cube[data-cube='1']{
+            animation: spin 2s ease-in-out 0s infinite;
+          }
+        }
+      }
+    }
+  }
+
+  nav{
+    margin-left: auto;
+
+    ul{
+      display: flex;
+      flex-direction: row;
+    }
+
+    li > a{
+      display: inline-block;
+      padding: 0.2em 0.5em;
+      transition: color 300ms;
+
+      &:hover{
+        color: theme_var('primary-em-font-color');
+      }
+
+      &.active{
+        > *:first-child{
+          color: theme_var('primary-em-font-color');
+        }
+      }
+    }
+  }
+
+  .burger-button{
+    &.active{
+      path.line{
+        stroke: theme_var('primary-em-font-color');
+      }
+    }
+  }
+}
