@@ -1,0 +1,145 @@
+@import '../../../styles/theme';
+@import '../../../styles/animations/faWave';
+
+section#intro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  //noinspection CssInvalidPropertyValue
+  min-height: calc( 100vh - theme_var('footer-height') );
+  //noinspection CssInvalidPropertyValue
+  margin-top: calc(-1 * theme_var('header-height'));
+  //noinspection CssInvalidPropertyValue
+  padding: theme_var('header-height') 1em 1em 1em;
+  background: url('../../../images/section-bg.png') 0 0 / 100% no-repeat;
+
+  section.text{
+    width: max-content;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1em 2em;
+
+    h1{
+      > em{
+        font-size: 130%;
+      }
+      font-size: 1.2em;
+      font-weight: 900;
+    }
+
+    h2{
+      font-size: 1.8em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .fa-wave{
+      font-size: 150%;
+      color: #ffcb1b;
+    }
+  }
+
+  section.illustration{
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+
+    picture{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 100%;
+      height: auto;
+      transform: translate(-50%,-50%);
+      aspect-ratio: 1/1;
+    }
+
+    &.landscape{
+      picture{
+        width: auto;
+        height: 100%;
+      }
+    }
+
+    &.loading{
+      &:before{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        content: ' ';
+        transform: translate(-50%,-50%);
+        animation: spin-before 1s ease-in-out 0s infinite;
+        border-right: 3px solid #fff;
+        border-radius: 100%;
+      }
+    }
+
+    img{
+      position: absolute;
+
+      &.desk{
+        bottom: 10%;
+        left: 19%;
+        width: 56.8%;
+      }
+
+      &.plant{
+        right: 11.6%;
+        bottom: 26.2%;
+        width: 15%;
+      }
+
+      &.floatWeb{
+        top: 5.3%;
+        left: 11.2%;
+        width: 28.3%;
+        animation: float-anim 5s ease-in-out 0s infinite alternate-reverse;
+      }
+
+      &.floatCode{
+        top: 7.8%;
+        left: 35.1%;
+        width: 9.5%;
+        animation: float-anim 5s ease-in-out 0s infinite alternate;
+      }
+    }
+  }
+}
+
+@keyframes spin-before {
+  from{
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+
+  to{
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+@keyframes float-anim {
+  from{
+    transform: translate(0,0);
+  }
+
+  to{
+    transform: translate(5%,-4%);
+  }
+}
+
+@include mq('tablet'){
+  section#intro{
+    flex-direction: row;
+    
+    section.text{
+      margin: auto 0;
+    }
+  }
+}

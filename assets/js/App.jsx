@@ -1,25 +1,23 @@
 import React, {Suspense} from "react";
-import {Link} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Outlet } from 'react-router-dom';
+
 
 import '../styles/styles.scss';
 import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 export default class App extends React.Component {
     render() {
         return (<>
                 <Header />
-                <h1>Hello World!!</h1>
-                <hr />
-                    <ul>
-                        <li><Link to='/' >Home</Link></li>
-                        <li><Link to='route1' >Route 1</Link></li>
-                        <li><Link to='route2' >Route 2</Link></li>
-                    </ul>
-                <hr />
-                <Suspense fallback='inner loading'>
-                    <Outlet />
-                </Suspense>
+                <main>
+                    <Suspense fallback={<FontAwesomeIcon icon={faSpinner} className='fa-spin app-inner-load' />}>
+                        <Outlet />
+                    </Suspense>
+                </main>
+            <Footer />
         </>);
     }
 }

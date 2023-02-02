@@ -1,0 +1,11 @@
+@import '../../../styles/theme';
+
+#root > footer{
+  font-size: 0.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: theme_var('footer-height');
+  padding: 0.5em;
+  background: theme_var('primary-color');
+}
