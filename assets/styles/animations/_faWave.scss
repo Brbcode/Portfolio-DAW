@@ -1,0 +1,25 @@
+.fa-wave{
+  --fa-animation-duration: 1s;
+  --fa-animation-delay: 0s;
+  --fa-animation-easing: cubic-bezier(0.5,0,0.4,1);
+  --fa-wave-offset: -35deg;
+  --fa-wave-angle-from: -15deg;
+  --fa-wave-angle-to: 15deg;
+  animation-name: fa-wave;
+  animation-duration: var(--fa-animation-duration);
+  animation-timing-function: var(--fa-animation-easing);
+  animation-delay: var(--fa-animation-delay);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+//noinspection CssInvalidFunction
+@keyframes fa-wave {
+  from{
+    transform: rotate(calc(var(--fa-wave-offset,0) + var(--fa-wave-angle-from) ));
+  }
+
+  to{
+    transform: rotate(calc(var(--fa-wave-offset,0) + var(--fa-wave-angle-to)));
+  }
+}

@@ -10,3 +10,16 @@ html{
   background-blend-mode: screen;
 }
 
+b {font-weight: 800;}
+em{color: theme_var('primary-em-font-color');}
+
+#root {
+  .app-inner-load{
+    //noinspection CssInvalidPropertyValue
+    height: calc( 100vh - theme_var('header-height') - theme_var('footer-height') );
+  }
+
+  > main{
+    margin-top: theme_var('header-height');
+  }
+}

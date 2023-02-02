@@ -23,6 +23,7 @@ const RouteExample = React.lazy(() =>
     })
 );
 //React.lazy(()=> import('./js/Routes/RouteExample'));
+const Home = React.lazy(()=>import('./js/Routes/Home'));
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <App/>,
         errorElement: <div>404 error</div>,
         children: [
+            {
+                path: '',
+                element: <Home />
+            },
             {
                 path: 'route1',
                 element: <RouteExample routeID={1}/>

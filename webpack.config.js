@@ -86,6 +86,11 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
+    .configureDevServerOptions((options)=>{
+        options.server = {
+            type: 'https',
+        }
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
