@@ -5,45 +5,28 @@ import * as Effects from "./Effects";
 export default class ComponentSwapper extends React.Component{
     constructor(props) {
         super(props);
-
-        this.state = {
-            swapping: false,
-            output: this.props.children
-        }
-
-        this.swap = this.swap.bind(this);
-        this.setSwapping = this.setSwapping.bind(this);
-        this.props.effect.swapping = this.setSwapping;
-        this.props.effect.output = (value)=>this.setState(v=>({...v,output: value}));
+        this.refEff = React.createRef();
     }
 
-    swap(component){
-        if(!this.state.swapping){
-            this.props.effect.swap(this.state.output,component);
-        }
-        else
-            console.warn('ComponentSwapper is already performing a swap');
-    }
-
-    setSwapping(value,callback){
-        if(this.state.swapping!==value)
-            this.setState(v=>({...v,swapping: value}),callback);
+    swap = (newValue)=>{
+        this.refEff.current.apply(newValue);
     }
 
     render() {
-        return <>{this.state.output}</>;
+        const {effect, ...others} = this.props;
+        const Effect = effect;
+        return <><Effect ref={this.refEff} output={this.props.children} {...others} /></>;
     }
 }
 
-
 ComponentSwapper.propTypes = {
-    effect: PropTypes.oneOfType(
-        Object.keys(Effects).map((key)=>PropTypes.instanceOf(Effects[key]))
-    ),
+    effect: PropTypes.elementType,
+    options: PropTypes.object,
 }
 
 ComponentSwapper.defaultProps = {
-    effect: new Effects.None()
+    effect: Effects.None,
+    options: {}
 }
 
 export {Effects};
