@@ -18,7 +18,7 @@ const App = React.lazy(() =>
 const RouteExample = React.lazy(() =>
     import('./js/Routes/RouteExample').then((module) => {
         return new Promise((resolve) => {
-            setTimeout(() => resolve(module), 1500);
+            setTimeout(() => resolve(module), 5000);
         });
     })
 );
