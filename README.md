@@ -2,6 +2,7 @@
 ![badge](https://img.shields.io/badge/Powered%20by-Coffee-brightgreen?logo=coffeescript)
 ![badge](https://img.shields.io/badge/Made%20with-React-brightgreen?logo=react)
 ![badge](https://img.shields.io/badge/Made%20with-Symfony-brightgreen?logo=symfony)
+![badge](https://img.shields.io/badge/Deployable%20with-Docker-brightgreen?logo=docker)
 ![badge](https://img.shields.io/badge/Open-Source-brightgreen?logo=github)
 ![badge](https://img.shields.io/badge/Fancy-Style-brightgreen?logo=sass)
 [![badge](https://img.shields.io/badge/Enhanced%20with-badges-brightgreen?logo=shieldsdotio)](https://shields.io/)
@@ -21,18 +22,22 @@ Please give me proper credit by linking back to this [repo](https://github.com/B
 
 ## Features
 ![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
-## Prerequisites
-A basic knowledge of React and Object oriented programming with PHP will help you get the best out of this article.
 
-Do ensure that you have installed on your system:
-- [Composer](https://getcomposer.org/), recommended version 2.5.1
-- [PHP](https://www.php.net/), at least version 8.1 or greater, recommended 8.2.1
-- [Yarn package manager](https://yarnpkg.com/), recommended version 1.22.19
-- [Node.js](https://nodejs.org/en/), recommended version 16.19.0
-
-![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
 ## Getting Started
-![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
+
+- Install [Docker Composer](https://docs.docker.com/compose/install/)
+- Run ``docker-compose -d --build`` to build and run images
+- Run ``docker exec -it php sh`` to open an interactive shell terminal.
+- Work using ``composer``, ``symfony``, ``yarn`` commands. e.g.: 
+    ```
+    > composer install #Install composer dependencies
+    > yarn install #Install node dependencies
+    > yarn run encore dev --watch #Watch react changes
+    ```
+- Open [http://localhost:8000](http://localhost:8000/) in your favorite web browser
+- Run ``docker-compose stop`` to stop the docker containers
+
+
 ## 🛠 Installation and Setup Instructions
 ![badge](https://img.shields.io/badge/%20-TODO-red?logo=hackaday)
 ## Usage Instructions
