@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'theme';
 @import 'mixins';
+@import 'animations/spin';
 
 @include theme;
 
@@ -21,5 +22,28 @@ em{color: theme_var('primary-em-font-color');}
 
   > main{
     margin-top: theme_var('header-height');
+
+    #route-inner-load{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      //noinspection CssInvalidPropertyValue
+      min-height: calc( 100vh - theme_var('footer-height') );
+      //noinspection CssInvalidPropertyValue
+      margin-top: calc(-1 * theme_var('header-height'));
+
+      .logo{
+        height: 20vh;
+
+        .cube[data-cube='1']{
+          animation: spin 2s ease-in-out 0s infinite;
+        }
+      }
+    }
   }
 }
+
+
+
+
