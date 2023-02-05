@@ -1,12 +1,15 @@
 import IEffect from "./IEffect";
 
 export default class None extends IEffect{
-    constructor() {
-        super({});
+    constructor(props) {
+        super(props);
     }
 
-    _effect(from, to) {
-        this.output(to);
-        this._end();
+    _effect = (newValue) => {
+        this.setState(v=>({
+            ...v,
+            output: newValue,
+            running: false
+        }));
     }
 }

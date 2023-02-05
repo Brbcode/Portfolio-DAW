@@ -1,36 +1,55 @@
-export default class IEffect{
-    #endSwapping;
-    constructor(options) {
-        this.options = options;
-        this.#endSwapping = false;
+import React from "react";
+import PropTypes from "prop-types";
+
+export default class IEffect extends React.Component{
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            output: this.props.output,
+            running: false,
+        }
     }
 
-    #start(){
-        const ref = this;
-        this.swapping(true,()=>{
-            new Promise((resolve)=> {
-                (function waitForEnd(){
-                    if(ref.#endSwapping) return resolve();
-                    setTimeout(waitForEnd,30);
-                })();
-            }).then(()=>{
-                this.swapping(false,()=>{
-                    ref.#endSwapping=false;
-                });
-            });
-        });
+    _start = ()=>{
+        this.setState(v=>({
+            ...v,
+            running: true
+        }));
     }
 
-    swap(from, to){
-        this.#start();
-        this._effect(from,to);
+    _stop = ()=>{
+        this.setState(v=>({
+            ...v,
+            running: false
+        }));
     }
 
-    _end(){
-        this.#endSwapping = true;
+    apply = (newValue) => {
+        if(!this.state.running){
+            this._start();
+            this._effect(newValue);
+        }
+        else
+            console.warn('Effect already running');
     }
 
-    _effect(from, to){
+    _effect(newValue){
         throw new Error("Abstract Method has no implementation");
     }
+
+    render() {
+        return <>{this.state.output}</>;
+    }
+}
+
+IEffect.propTypes = {
+    output: PropTypes.array,
+    options: PropTypes.object,
+}
+
+IEffect.defaultProps = {
+    output: [],
+    options: {}
 }

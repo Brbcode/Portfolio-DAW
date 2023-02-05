@@ -76,7 +76,7 @@ export default class Intro extends React.Component{
                         <em>Bruno García</em>
                     </h2>
                     <p>
-                        <ComponentSwapper ref={this.swapper} effect={new Effects.None()} >
+                        <ComponentSwapper ref={this.swapper} effect={Effects.Scramble} >
                             Hello world<em>!!</em>
                         </ComponentSwapper>
                     </p>
