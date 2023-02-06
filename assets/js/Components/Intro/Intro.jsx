@@ -23,11 +23,33 @@ export default class Intro extends React.Component{
                 [key]: false
             }),{}),
             illustrationLandscape: null,
+            msgIndex: 0
         }
 
         this.swapper = React.createRef();
         this.secRef = React.createRef();
         this.picRef = React.createRef();
+    }
+
+    get #swapperData(){
+        return ([
+            {
+                message: <>Developer Front End</>,
+                effect: {effect: Effects.Scramble, options:{wrapperClass: 'letter'}}
+            },
+            {
+                message: <>Developer Back End</>,
+                effect: {effect: Effects.Textwriter, options:{speed: 100, rewriteAll: false, textCursor:<span className='cursor'>█</span>}}
+            },
+            {
+                message: <>Developer Full Stack</>,
+                effect: {effect: Effects.Textwriter, options:{speed: 100, rewriteAll: false, textCursor:<span className='cursor'>█</span>}}
+            },
+            {
+                message: <>Open Source Contributor</>,
+                effect: {effect: Effects.Scramble, options:{wrapperClass: 'letter'}}
+            }
+        ]);
     }
 
     static #unpackContext(context){
@@ -50,10 +72,21 @@ export default class Intro extends React.Component{
         });
 
         this.resizeObserver.observe(this.secRef.current);
+
+        this.interval = setInterval(()=>{
+            //console.log(this.#swapperData[this.state.msgIndex]);
+            this.setState(v=>({
+                ...v,
+                msgIndex: (v.msgIndex+1)%this.#swapperData.length,
+            }),()=>{
+                this.swapper.current.swap(this.#swapperData[this.state.msgIndex].message);
+            });
+        },4000);
     }
 
     componentWillUnmount() {
         this.resizeObserver?.disconnect();
+        clearInterval(this.interval);
     }
 
     render() {
@@ -76,16 +109,10 @@ export default class Intro extends React.Component{
                         <em>Bruno García</em>
                     </h2>
                     <p>
-                        <ComponentSwapper ref={this.swapper} effect={Effects.Textwriter} >
-                            Hello world<em>!!</em>
+                        <ComponentSwapper ref={this.swapper} {...this.#swapperData[this.state.msgIndex].effect} >
+                            {this.#swapperData[0].message}
                         </ComponentSwapper>
                     </p>
-                    <button onClick={()=>{
-                        this.swapper.current.swap(<>Hello world<em>!!</em> I<em>'</em>m Bruno</>);
-                        console.log('click');
-                    }}>
-                        effect
-                    </button>
                 </section>
                 <section ref={this.secRef} className={classNames('illustration',{loading},{landscape})}>
                     <picture ref={this.picRef} >

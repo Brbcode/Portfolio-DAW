@@ -45,11 +45,9 @@ export default class IEffect extends React.Component{
 }
 
 IEffect.propTypes = {
-    output: PropTypes.array,
     options: PropTypes.object,
 }
 
 IEffect.defaultProps = {
-    output: [],
     options: {}
 }
