@@ -76,12 +76,12 @@ export default class Intro extends React.Component{
                         <em>Bruno García</em>
                     </h2>
                     <p>
-                        <ComponentSwapper ref={this.swapper} effect={Effects.Scramble} >
+                        <ComponentSwapper ref={this.swapper} effect={Effects.Textwriter} >
                             Hello world<em>!!</em>
                         </ComponentSwapper>
                     </p>
                     <button onClick={()=>{
-                        this.swapper.current.swap('asdads');
+                        this.swapper.current.swap(<>Hello world<em>!!</em> I<em>'</em>m Bruno</>);
                         console.log('click');
                     }}>
                         effect
