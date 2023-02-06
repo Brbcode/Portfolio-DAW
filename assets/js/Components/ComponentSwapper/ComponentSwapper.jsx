@@ -26,7 +26,6 @@ ComponentSwapper.propTypes = {
 
 ComponentSwapper.defaultProps = {
     effect: Effects.None,
-    options: {}
 }
 
 export {Effects};
