@@ -71,7 +71,7 @@ export default class Scramble extends IEffect{
                        output: output.map((e,i)=> {
                            if(typeof e === 'string')
                                return <span key={i}>{e}</span>
-                           else if(e.key===null){
+                           else if(e?.key===null){
                                return React.cloneElement(e,{...e.props, key: i},e.props.children);
                            }
                            return  e;
@@ -85,7 +85,7 @@ export default class Scramble extends IEffect{
                        output: output.map((e,i)=> {
                            if(typeof e === 'string')
                                return <span key={i}>{e}</span>
-                           else if(e.key===null){
+                           else if(e?.key===null){
                                return React.cloneElement(e,{...e.props, key: i},e.props.children);
                            }
                            return  e;
@@ -137,7 +137,6 @@ Scramble.propTypes = {
     options: PropTypes.shape({
         duration: PropTypes.number,
         letters: PropTypes.string,
-        wrapper: PropTypes.bool,
         wrapperClass: PropTypes.string,
         ignoreEquals: PropTypes.bool,
     })

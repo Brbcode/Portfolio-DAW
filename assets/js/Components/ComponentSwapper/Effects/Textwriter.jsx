@@ -25,9 +25,9 @@ export default class Textwriter extends IEffect{
     }
 
     componentWillUnmount() {
-        if(this.this.timeoutEnd)
+        if(this.timeoutEnd)
             clearTimeout(this.timeoutEnd);
-        this.timeouts.forEach(t=>clearTimeout(t));
+        this.timeouts?.forEach(t=>clearTimeout(t));
     }
 
     _effect = (newValue) => {
@@ -35,7 +35,7 @@ export default class Textwriter extends IEffect{
         const to = this.#cmap(newValue).map((e,i)=>{
             if(typeof e === 'string')
                 return <span key={i}>{e}</span>
-            else if(e.key===null){
+            else if(e?.key===null){
                 return React.cloneElement(e,{...e.props, key: i},e.props.children);
             }
             return  e;
@@ -43,7 +43,7 @@ export default class Textwriter extends IEffect{
         const output = from.map((e,i)=>{
             if(typeof e === 'string')
                 return <span key={i}>{e}</span>
-            else if(e.key===null){
+            else if(e?.key===null){
                 return React.cloneElement(e,{...e.props, key: i},e.props.children);
             }
             return  e;
@@ -64,7 +64,6 @@ export default class Textwriter extends IEffect{
             }
         })();
 
-        console.log(output);
 
         let step = 1;
         for (let i=output.length; i>startIndex; i--){

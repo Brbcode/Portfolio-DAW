@@ -1,5 +1,6 @@
 @import '../../../styles/theme';
 @import '../../../styles/animations/faWave';
+@import '../../../styles/animations/fade';
 
 section#intro{
   display: flex;
@@ -38,6 +39,23 @@ section#intro{
     .fa-wave{
       font-size: 150%;
       color: #ffcb1b;
+    }
+
+    p{
+      margin-top: 1em;
+      width: 0;
+      overflow: visible;
+      white-space: nowrap;
+      font-size: 18pt;
+
+      .letter{
+        @include theme-font('code');
+        opacity: 0.7;
+      }
+
+      .cursor{
+        animation: fade 0.4s linear 0s infinite alternate;
+      }
     }
   }
 
