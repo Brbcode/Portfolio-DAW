@@ -25,7 +25,9 @@ export default class Textwriter extends IEffect{
     }
 
     componentWillUnmount() {
-        this.timeouts.foreach(t=>clearTimeout(t));
+        if(this.this.timeoutEnd)
+            clearTimeout(this.timeoutEnd);
+        this.timeouts.forEach(t=>clearTimeout(t));
     }
 
     _effect = (newValue) => {
