@@ -23,13 +23,14 @@ const RouteExample = React.lazy(() =>
     })
 );
 //React.lazy(()=> import('./js/Routes/RouteExample'));
+const NotFound = React.lazy(()=>import('./js/Components/NotFound/NotFound'));
 const Home = React.lazy(()=>import('./js/Routes/Home'));
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
-        errorElement: <div>404 error</div>,
+        errorElement: <div>error</div>,
         children: [
             {
                 path: '',
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
             {
                 path: 'route2',
                 element: <RouteExample routeID={2}/>
+            },
+            //Not found fallback
+            {
+                path: '*',
+                element: <NotFound />
             }
         ]
     },

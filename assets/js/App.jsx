@@ -19,6 +19,7 @@ export default class App extends React.Component {
                         </section>
                     }>
                         <Outlet />
+                        {this.props.children}
                     </Suspense>
                 </main>
             <Footer />
