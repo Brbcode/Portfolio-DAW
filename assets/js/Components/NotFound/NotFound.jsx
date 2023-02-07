@@ -89,6 +89,7 @@ class NotFoundComponent extends React.Component{
                           return <LazyImage
                               key={key}
                               className={key}
+                              alt={`Picture part '${key}'`}
                               sources={
                                   unpack.map(({path,size})=>({
                                       label: `${size}w`,
