@@ -1,8 +1,6 @@
 @import '../../../styles/theme';
-@import '../../../styles/animations/faWave';
-@import '../../../styles/animations/fade';
 
-section#intro{
+#not-found{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,44 +15,38 @@ section#intro{
   background: url('../../../images/section-bg.png') 0 0 / 100% no-repeat;
 
   section.text{
-    width: max-content;
     margin-right: auto;
     margin-left: auto;
     padding: 1em 2em;
 
     h1{
-      > em{
-        font-size: 130%;
-      }
       font-size: 1.2em;
       font-weight: 900;
+
+      > em{
+        &:first-child{
+          font-size: 180%;
+          color: #e20391;
+        }
+
+      }
     }
 
-    h2{
-      font-size: 1.8em;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .fa-wave{
-      font-size: 150%;
-      color: #ffcb1b;
-    }
-
-    p{
-      font-size: 18pt;
-      white-space: nowrap;
-      overflow: visible;
-      width: 0;
+    nav{
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
       margin-top: 1em;
 
-      .letter{
-        @include theme-font('code');
-        opacity: 0.7;
-      }
+      button, a{
+        > svg{
+          transition: 0.3s;
+        }
 
-      .cursor{
-        animation: fade 0.4s linear 0s infinite alternate;
+        &:hover > svg{
+          color: theme_var('primary-em-font-color');
+          transform: scale(120%);
+        }
       }
     }
   }
@@ -103,7 +95,7 @@ section#intro{
     img{
       position: absolute;
 
-      &.desk{
+      &.messyDesk{
         bottom: 10%;
         left: 19%;
         width: 56.8%;
@@ -127,6 +119,12 @@ section#intro{
         left: 35.1%;
         width: 9.5%;
         animation: float-anim 5s ease-in-out 0s infinite alternate;
+      }
+
+      &.paperFall{
+        bottom: 2.5%;
+        left: 10%;
+        width: 51%;
       }
     }
   }
@@ -153,16 +151,12 @@ section#intro{
 }
 
 @include mq('tablet'){
-  section#intro{
+  section#not-found{
     font-size: 150%;
     flex-direction: row;
-    
+
     section.text{
       margin: auto 0;
-
-      p{
-        font-size: 30pt;
-      }
     }
   }
 }
