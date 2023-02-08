@@ -23,6 +23,7 @@ em{color: theme_var('primary-em-font-color');}
 
   > main{
     margin-top: theme_var('header-height');
+    z-index: z('site-main');
 
     #route-inner-load{
       display: flex;
@@ -45,6 +46,27 @@ em{color: theme_var('primary-em-font-color');}
   }
 }
 
+#modal-wrapper{
+  background: #4446;
+  backdrop-filter: blur(0px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: z('modal');
+  opacity: 0;
+  visibility: hidden;
 
+  &.active{
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(10px);
+    transition: 300ms;
+  }
+}
 
 

@@ -10,6 +10,7 @@ import SVG from "react-inlinesvg";
 export default class App extends React.Component {
     render() {
         return (<>
+                <section id='modal-wrapper'></section>
                 <Header />
                 <main>
                     <Suspense

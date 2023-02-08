@@ -8,4 +8,5 @@
   height: theme_var('footer-height');
   padding: 0.5em;
   background: theme_var('primary-color');
+  z-index: z('site-footer');
 }
