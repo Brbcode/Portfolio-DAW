@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReply, faHouse } from '@fortawesome/free-solid-svg-icons';
 import './notfound.scss';
 import {Link, useNavigate} from "react-router-dom";
+import ComponentSwapper, {Effects} from "../ComponentSwapper/ComponentSwapper";
 
 const messyDesk = require.context('../../../images/sets/', true, /messy-desk-(300|768|1280)w\.png$/);
 const plant = require.context('../../../images/sets/', true, /plant-(300|768|1280)w\.png$/);
@@ -25,6 +26,7 @@ class NotFoundComponent extends React.Component{
             illustrationLandscape: null,
         }
 
+        this.swapper = React.createRef();
         this.secRef = React.createRef();
         this.picRef = React.createRef();
     }
@@ -42,10 +44,30 @@ class NotFoundComponent extends React.Component{
         });
 
         this.resizeObserver.observe(this.secRef.current);
+
+        const letters = "0?⚿";
+        this.interval = setInterval(()=>{
+            const offsets = [~~(Math.random()*"Whoops!".length),
+                            ~~(Math.random()*"Whoops!".length)];
+            let swapvalue = "Whoops!!";
+            offsets.forEach((index)=>{
+               const replacement = letters[~~(Math.random()*letters.length)];
+               swapvalue = swapvalue.substring(0,index) + replacement + swapvalue.substring(index+1);
+            });
+
+            this.swapper.current.swap(swapvalue);
+            this.timeout = setTimeout(()=>{
+                this.swapper.current.swap("Whoops!");
+            },400);
+        },5000);
     }
 
     componentWillUnmount() {
         this.resizeObserver?.disconnect();
+        if(this.interval)
+            clearInterval(this.interval);
+        if(this.timeout)
+            clearTimeout(this.timeout);
     }
 
     static #unpackContext(context){
@@ -64,7 +86,15 @@ class NotFoundComponent extends React.Component{
           <section id='not-found'>
               <section className='text'>
                   <h1>
-                      <em>Whoops!</em>
+                      <em>
+                          <ComponentSwapper ref={this.swapper} effect={Effects.Scramble} options={{
+                              duration: 300,
+                              wrapperClass: 'code-err-letter',
+                              ignoreEquals: true,
+                          }}>
+                              Whoops!
+                          </ComponentSwapper>
+                      </em>
                       <br />
                       I can<em>'</em>t find what are you looking for.
                   </h1>
