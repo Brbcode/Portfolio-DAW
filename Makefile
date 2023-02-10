@@ -10,13 +10,13 @@ rebuild:
 	docker compose up -d --build
 
 shell:
-	docker compose exec -it php sh
+	docker compose exec -it fpm sh
 
 watch:
-	docker compose exec php yarn run encore dev --watch
+	docker compose exec fpm yarn run encore dev --watch
 
 db:
-	docker compose exec php ./bin/console doctrine:database:drop --if-exist --force
-	docker compose exec php ./bin/console doctrine:database:create
-	docker compose exec php ./bin/console doctrine:migrations:migrate -n
+	docker compose exec fpm ./bin/console doctrine:database:drop --if-exist --force
+	docker compose exec fpm ./bin/console doctrine:database:create
+	docker compose exec fpm ./bin/console doctrine:migrations:migrate -n
 
