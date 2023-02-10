@@ -9,7 +9,7 @@ class DevExceptionListener extends ProdExceptionListener
     {
         $json = parent::extractJSON($exception);
 
-        $json['environment_mode'] = true;
+        $json['environment_mode'] = 'development';
         $json['exception'] = [
             'trace' => $exception->getTrace(),
             'type' => $exception::class,
