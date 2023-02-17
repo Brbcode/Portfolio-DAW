@@ -128,6 +128,13 @@ section#intro{
         width: 9.5%;
         animation: float-anim 5s ease-in-out 0s infinite alternate;
       }
+
+      &.smoke{
+        right: 33.2%;
+        bottom: 46.9%;
+        width: 5.5%;
+        opacity: 0.8;
+      }
     }
   }
 }

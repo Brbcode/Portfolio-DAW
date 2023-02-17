@@ -10,7 +10,8 @@ const desk = require.context('../../../images/sets/',true,/desk-(300|768|1280)w\
 const plant = require.context('../../../images/sets/', true, /plant-(300|768|1280)w\.png$/);
 const floatWeb = require.context('../../../images/sets/', true, /float-web-(300|768|1280)w\.png$/);
 const floatCode = require.context('../../../images/sets/', true, /float-code-(300|768|1280)w\.png$/);
-const contexts = {desk,plant,floatWeb,floatCode};
+const smoke = require.context('../../../images/sets/', true, /smoke-(100)w\.gif$/);
+const contexts = {desk,plant,floatWeb,floatCode,smoke};
 
 export default class Intro extends React.Component{
 

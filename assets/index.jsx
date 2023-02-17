@@ -23,6 +23,7 @@ const RouteExample = React.lazy(() =>
     })
 );
 //React.lazy(()=> import('./js/Routes/RouteExample'));
+const FatalError = React.lazy(()=>import('./js/Routes/FatalError/FatalError'));
 const NotFound = React.lazy(()=>import('./js/Components/NotFound/NotFound'));
 const Home = React.lazy(()=>import('./js/Routes/Home'));
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
-        errorElement: <div>error</div>,
+        errorElement: <FatalError />,
         children: [
             {
                 path: '',

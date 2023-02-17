@@ -1,0 +1,28 @@
+@import '../../../styles/theme';
+
+#fatal-error{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  > h1{
+    font-size: 40vw;
+    font-weight: 900;
+    line-height: 0.9;
+    color: transparent;
+    position: relative;
+    background: repeat url('../../../images/background.gif'), linear-gradient(270deg,#1b1429,#140f23);
+    background-clip: text;
+    -webkit-text-stroke: 2px #fff;
+  }
+
+  p{
+    font-size: 4vw;
+  }
+
+  a{
+    color: theme_var('primary-em-font-color');
+  }
+}
