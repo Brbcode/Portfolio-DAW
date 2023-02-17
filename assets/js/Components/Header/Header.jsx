@@ -3,7 +3,7 @@ import './styles.scss';
 import {Link, NavLink } from "react-router-dom";
 import SVG from 'react-inlinesvg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faPaperclip, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faGear, faPenNib } from '@fortawesome/free-solid-svg-icons';
 import BurgerButton from '../BurgerButton/BurgerButton';
 import classNames from "classnames";
 
@@ -21,9 +21,9 @@ export default class Header extends React.Component {
                 path: '/'
             },
             {
-                icon: faPaperclip,
-                label: 'Route 1',
-                path: '/route1'
+                icon: faPenNib,
+                label: 'Projects',
+                path: '/projects'
             },
             {
                 icon: faGear,

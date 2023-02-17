@@ -1,0 +1,11 @@
+@import '../../../styles/theme';
+
+#projects{
+  //noinspection CssInvalidPropertyValue
+  min-height: calc( 100vh - theme_var('footer-height') );
+  //noinspection CssInvalidPropertyValue
+  margin-top: calc(-1 * theme_var('header-height'));
+  //noinspection CssInvalidPropertyValue
+  padding: theme_var('header-height') 1em 1em 1em;
+  background: url('../../../images/section-bg.png') 0 0 / 100% no-repeat;
+}
