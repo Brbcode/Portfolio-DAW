@@ -1,6 +1,7 @@
 import IEffect from "./IEffect";
 import PropTypes from "prop-types";
 import React from "react";
+import '../../../Utils/StringExtensions';
 
 export default class Scramble extends IEffect{
 
@@ -54,7 +55,7 @@ export default class Scramble extends IEffect{
         output.forEach((element,index)=>{
             const beginDelay = (Math.random() * duration) / 2;
             const endDelay = beginDelay + (Math.random() * (duration - beginDelay));
-            const char = this.#char();
+            const char = this.#options.letters.randomChar();
 
             const wrapChar = <span key={index} className={wrapperClass} >{char}</span>
 
@@ -95,12 +96,6 @@ export default class Scramble extends IEffect{
             });
         })
     }
-
-    #char = ()=>{
-        return this.#options.letters[
-                ~~(Math.random() * this.#options.letters.length)
-            ];
-    };
 
     static #VisibleEqual(a,b){
         const cmpA = (typeof a === "object")?a.props.children:a;
