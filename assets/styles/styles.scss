@@ -7,6 +7,7 @@
 
 html{
   color: theme_var('primary-font-color');
+  overflow-x: hidden;
   background: repeat url('../images/background.gif'), linear-gradient(270deg,#1b1429,#140f23);
   background-blend-mode: screen;
 }
@@ -22,8 +23,8 @@ em{color: theme_var('primary-em-font-color');}
   }
 
   > main{
-    margin-top: theme_var('header-height');
     z-index: z('site-main');
+    margin-top: theme_var('header-height');
 
     #route-inner-load{
       display: flex;
@@ -47,25 +48,25 @@ em{color: theme_var('primary-em-font-color');}
 }
 
 #modal-wrapper{
-  background: #4446;
-  backdrop-filter: blur(0px);
   position: absolute;
+  z-index: z('modal');
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   display: flex;
+  visibility: hidden;
   justify-content: center;
   align-items: center;
-  z-index: z('modal');
+  width: 100vw;
+  height: 100vh;
   opacity: 0;
-  visibility: hidden;
+  background: #4446;
+  backdrop-filter: blur(0px);
 
   &.active{
-    opacity: 1;
     visibility: visible;
-    backdrop-filter: blur(10px);
+    opacity: 1;
     transition: 300ms;
+    backdrop-filter: blur(10px);
   }
 }
 

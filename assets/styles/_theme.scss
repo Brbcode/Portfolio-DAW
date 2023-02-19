@@ -43,7 +43,7 @@ $theme-layers: (
 
 $theme-fonts: (
   'default': "'Roboto', sans-serif",
-     'code': "'Courier Prime', monospace"
+  'code': "'Courier Prime', monospace"
 );
 
 @function t-font($name){
@@ -93,4 +93,12 @@ $theme-vars: (
       --#{$name}: #{$value};
     }
   }
+}
+
+.button{
+  font-weight: 700;
+  color: theme_var('primary-font-color');
+  padding: 0.2em 1.5em;
+  border-radius: 1em;
+  background: theme_var('primary-em-font-color');
 }

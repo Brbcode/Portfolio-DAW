@@ -1,11 +1,35 @@
 @import '../../../styles/theme';
 
 #projects{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
   //noinspection CssInvalidPropertyValue
   min-height: calc( 100vh - theme_var('footer-height') );
   //noinspection CssInvalidPropertyValue
   margin-top: calc(-1 * theme_var('header-height'));
   //noinspection CssInvalidPropertyValue
-  padding: theme_var('header-height') 1em 1em 1em;
+  padding: calc(theme_var('header-height') + 1em) 1em 1em 1em;
   background: url('../../../images/section-bg.png') 0 0 / 100% no-repeat;
+}
+
+@include mq('tablet'){
+  #projects{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    > *{
+      width: calc(50% - 0.5em);
+    }
+  }
+}
+
+@include mq('tablet-wide'){
+  #projects{
+    > *{
+      max-width: 360px;
+    }
+  }
 }
