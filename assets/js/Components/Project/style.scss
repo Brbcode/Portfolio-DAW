@@ -79,6 +79,7 @@ article.product{
         text-shadow: 1px 1px #4448;
         display: flex;
         padding: 0.2em 0.5em;
+        cursor: default;
         border-radius: 1em;
       }
     }
@@ -89,6 +90,10 @@ article.product{
       flex-grow: 1;
       margin-right: 0.4em;
       margin-bottom: 0.5em;
+
+      p{
+        margin-bottom: 0.5em;
+      }
 
       &:before{
         position: sticky;

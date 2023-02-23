@@ -5,7 +5,8 @@ import Project from "../../Components/Project/Project";
 export default class Projects extends React.Component{
     render() {
         return <section id='projects'>
-            <Project to={'/example'} title={'Example'} image={''} badges={['one','two']} >
+            <Project to={'/chatbrb'} title={'ChatBrb'} image={''}
+                     badges={['built-in','react','symfony','api-support']} >
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et magna sit amet metus venenatis
                     semper sit amet in dolor. Donec venenatis purus vestibulum sodales semper. Vivamus et porta erat.
