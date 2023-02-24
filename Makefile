@@ -16,7 +16,7 @@ watch:
 	docker compose exec fpm yarn run encore dev --watch
 
 db:
-	docker compose exec fpm ./bin/console doctrine:database:drop --if-exist --force
-	docker compose exec fpm ./bin/console doctrine:database:create
-	docker compose exec fpm ./bin/console doctrine:migrations:migrate -n
-	docker compose exec fpm ./bin/console hau:fix:load -n
+	docker compose exec fpm php bin/console doctrine:database:drop --if-exists --force
+	docker compose exec fpm php bin/console doctrine:database:create
+	docker compose exec fpm php bin/console doctrine:migrations:migrate -n
+	docker compose exec fpm php bin/console hau:fix:load -n
