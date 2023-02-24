@@ -20,3 +20,9 @@ db:
 	docker compose exec fpm php bin/console doctrine:database:create
 	docker compose exec fpm php bin/console doctrine:migrations:migrate -n
 	docker compose exec fpm php bin/console hau:fix:load -n
+
+db-test:
+	docker compose exec fpm php bin/console doctrine:database:drop --if-exists --force --env=test
+	docker compose exec fpm php bin/console doctrine:database:create --env=test
+	docker compose exec fpm php bin/console doctrine:migrations:migrate -n --env=test
+	docker compose exec fpm php bin/console hau:fix:load -n --env=test
