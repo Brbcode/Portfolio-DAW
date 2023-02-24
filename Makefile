@@ -19,4 +19,4 @@ db:
 	docker compose exec fpm ./bin/console doctrine:database:drop --if-exist --force
 	docker compose exec fpm ./bin/console doctrine:database:create
 	docker compose exec fpm ./bin/console doctrine:migrations:migrate -n
-
+	docker compose exec fpm ./bin/console hau:fix:load -n

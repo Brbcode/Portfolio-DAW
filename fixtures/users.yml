@@ -1,0 +1,6 @@
+App\Entity\User:
+  user_t0:
+    __construct:
+      username: 'Test user'
+      email: 'user@example.com'
+      password: 'plainPassword'
