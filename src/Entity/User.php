@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Common\CreationDate;
 use App\Common\UuidGenerator;
 use App\Repository\UserRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -15,7 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    use CreationDate;
+    use CreationDate{
+        CreationDate::__construct as private __CreationDate;
+    }
 
     #[ORM\Id]
     #[ORM\Column(type: UuidType::NAME, unique: true)]
@@ -43,6 +46,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private string $password;
 
+    #[ORM\Column(nullable: true)]
+    private ?DateTimeImmutable $deactivateAt = null;
+
     public function __construct(string $username, string $email, string $password, bool $isActive=false,
                                 array $roles=[], Uuid|string|null $id=null)
     {
@@ -52,6 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $password;
         $this->isActive = $isActive;
         $this->roles = $roles;
+        $this->__CreationDate();
     }
 
     public function getId(): Uuid
