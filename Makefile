@@ -26,3 +26,8 @@ db-test:
 	docker compose exec fpm php bin/console doctrine:database:create --env=test
 	docker compose exec fpm php bin/console doctrine:migrations:migrate -n --env=test
 	docker compose exec fpm php bin/console hau:fix:load -n --env=test
+
+behat:
+	docker compose exec fpm vendor/bin/behat
+
+behat-full: db-test behat
