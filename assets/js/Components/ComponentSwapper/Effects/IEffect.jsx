@@ -1,53 +1,63 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class IEffect extends React.Component{
+export default class IEffect extends React.Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props)
+    // eslint-disable-next-line react/prop-types
+    const { output } = this.props;
 
-        this.state = {
-            output: this.props.output,
-            running: false,
-        }
-    }
+    this.state = {
+      output,
+      running: false,
+    };
+  }
 
-    _start = ()=>{
-        this.setState(v=>({
-            ...v,
-            running: true
-        }));
-    }
+  _start = () => {
+    this.setState((v) => ({
+      ...v,
+      running: true,
+    }));
+  };
 
-    _stop = ()=>{
-        this.setState(v=>({
-            ...v,
-            running: false
-        }));
-    }
+  // eslint-disable-next-line react/no-unused-class-component-methods
+  _stop = () => {
+    this.setState((v) => ({
+      ...v,
+      running: false,
+    }));
+  };
 
-    apply = (newValue) => {
-        if(!this.state.running){
-            this._start();
-            this._effect(newValue);
-        }
-        else
-            console.warn('Effect already running');
-    }
+  // eslint-disable-next-line react/no-unused-class-component-methods
+  apply = (newValue) => {
+    const { running } = this.state;
+    if (!running) {
+      // eslint-disable-next-line no-underscore-dangle
+      this._start();
+      // eslint-disable-next-line no-underscore-dangle
+      this._effect(newValue);
+      // eslint-disable-next-line no-console
+    } else { console.warn('Effect already running'); }
+  };
 
-    _effect(newValue){
-        throw new Error("Abstract Method has no implementation");
-    }
+  // eslint-disable-next-line class-methods-use-this,no-underscore-dangle
+  _effect() {
+    throw new Error('Abstract Method has no implementation');
+  }
 
-    render() {
-        return <>{this.state.output}</>;
-    }
+  render() {
+    const { output } = this.state;
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return <>{output}</>;
+  }
 }
 
 IEffect.propTypes = {
-    options: PropTypes.object,
-}
+  // eslint-disable-next-line react/forbid-prop-types,react/no-unused-prop-types
+  options: PropTypes.object,
+};
 
 IEffect.defaultProps = {
-    options: {}
-}
+  options: {},
+};

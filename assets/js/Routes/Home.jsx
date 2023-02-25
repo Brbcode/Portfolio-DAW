@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
 import Intro from '../Components/Intro/Intro';
 
-export default class RouteExample extends React.Component{
-    render() {
-        return (
-          <>
-              <Intro />
-          </>
-        );
-    }
+// eslint-disable-next-line react/prefer-stateless-function
+export default class RouteExample extends React.Component {
+  render() {
+    return (
+      <Intro />
+    );
+  }
 }

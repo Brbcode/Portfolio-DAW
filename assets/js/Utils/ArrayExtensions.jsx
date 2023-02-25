@@ -1,3 +1,4 @@
-Array.prototype.random = function(){
-    return this[~~(Math.random() * this.length)];
-}
+/* eslint-disable no-extend-native,func-names */
+Array.prototype.random = function () {
+  return this[Math.floor(Math.random() * this.length)];
+};
