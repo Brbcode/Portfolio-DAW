@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
 
-    #[Route(['/','/{reactRouting}'], name: 'app_default', requirements: ['reactRouting'=>'.+'], defaults: ['reactRouting'=>null], priority: -1)]
+    #[Route(['/','/{reactRouting}'], name: 'app_default', requirements: ['reactRouting'=>'.+'], defaults: ['reactRouting'=>null], priority: -2)]
     public function index(): Response
     {
         return $this->render('base.html.twig', [

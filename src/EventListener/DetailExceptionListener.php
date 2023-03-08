@@ -3,7 +3,7 @@
 namespace App\EventListener;
 
 
-class DevExceptionListener extends ProdExceptionListener
+class DetailExceptionListener extends ProdExceptionListener
 {
     protected function extractJSON(\Throwable $exception): array
     {

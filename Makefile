@@ -12,6 +12,9 @@ rebuild:
 shell:
 	docker compose exec -it fpm sh
 
+bash:
+	docker compose exec -it fpm /bin/bash
+
 watch:
 	docker compose exec fpm yarn run encore dev --watch
 
@@ -28,6 +31,6 @@ db-test:
 	docker compose exec fpm php bin/console hau:fix:load -n --env=test
 
 behat:
-	docker compose exec fpm vendor/bin/behat
+	docker compose exec fpm php vendor/bin/behat
 
 behat-full: db-test behat

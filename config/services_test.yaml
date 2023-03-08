@@ -5,3 +5,8 @@ services:
 
     App\Tests\Behat\:
         resource: '../tests/Behat/*'
+
+    App\EventListener\IExceptionListener:
+        class: App\EventListener\DetailExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }

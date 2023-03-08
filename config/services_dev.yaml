@@ -4,6 +4,6 @@ services:
     # Event Listener Services
     # DomainException Listener
   App\EventListener\IExceptionListener:
-    class: App\EventListener\DevExceptionListener
+    class: App\EventListener\DetailExceptionListener
     tags:
       - { name: kernel.event_listener, event: kernel.exception }
