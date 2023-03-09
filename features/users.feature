@@ -8,8 +8,6 @@ Feature:
     I want to have a demo scenario
 
     Scenario: It receives a response from Symfony's kernel
-        When I send a GET request to "/api/endpoint"
+        Given no exception traces
+        When I send a GET request to "/api/asd"
         Then print last JSON response
-
-
-    
