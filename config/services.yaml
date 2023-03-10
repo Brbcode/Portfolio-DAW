@@ -34,7 +34,9 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
 
-
+    App\Security\LoginAuthenticator:
+        tags:
+            - { name: 'security.authenticator' }
 
     app.jwt_token_authenticator:
         class: App\Security\JwtTokenAuthenticator
