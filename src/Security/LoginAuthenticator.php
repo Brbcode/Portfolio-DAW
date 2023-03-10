@@ -2,10 +2,10 @@
 
 namespace App\Security;
 
+use App\Exception\BadRequestHttpException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\PropertyAccess\Exception\AccessException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -74,6 +74,7 @@ class LoginAuthenticator implements InteractiveAuthenticatorInterface
         $userBadge = new UserBadge($credentials['username'], $this->userProvider->loadUserByIdentifier(...));
         $passport = new Passport($userBadge, new PasswordCredentials($credentials['password']));
 
+
         if ($this->userProvider instanceof PasswordUpgraderInterface) {
             $passport->addBadge(new PasswordUpgradeBadge($credentials['password'], $this->userProvider));
         }
@@ -104,7 +105,7 @@ class LoginAuthenticator implements InteractiveAuthenticatorInterface
                 $errorMessage = strtr($exception->getMessageKey(), $exception->getMessageData());
             }
 
-            return new JsonResponse(['error' => $errorMessage], JsonResponse::HTTP_UNAUTHORIZED);
+            return new JsonResponse(['error' => $errorMessage], Response::HTTP_UNAUTHORIZED);
         }
 
         return $this->failureHandler->onAuthenticationFailure($request, $exception);
@@ -120,16 +121,17 @@ class LoginAuthenticator implements InteractiveAuthenticatorInterface
         $this->translator = $translator;
     }
 
-    private function getCredentials(Request $request)
+    private function getCredentials(Request $request) : array
     {
         $data = json_decode($request->getContent());
         if (!$data instanceof \stdClass) {
             throw new BadRequestHttpException('Invalid JSON.');
         }
-        var_dump($this->options);
+
         $credentials = [];
         try {
             $credentials['username'] = $this->propertyAccessor->getValue($data, $this->options['username_path']);
+
 
             if (!\is_string($credentials['username'])) {
                 throw new BadRequestHttpException(sprintf('The key "%s" must be a string.', $this->options['username_path']));
