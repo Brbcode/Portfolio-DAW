@@ -27,7 +27,7 @@ final class RestContext extends BaseContext
     public function iSendARequestToWithJsonBody(string $method, string $url, PyStringNode|TableNode $body){
         $rawBody = static::getRawJsonBody($body);
 
-        $this->request->setHttpHeader("Content-Type", "text-json");
+        $this->request->setHttpHeader("Content-Type", "application/json");
         return $this->request->send(
             $method,
             $this->locatePath($url),

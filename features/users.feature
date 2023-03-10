@@ -8,8 +8,8 @@ Feature:
     I want to have a demo scenario
 
     Scenario: It receives a response from Symfony's kernel
-        Given no exception traces
-        When I send a GET request to "/api/endpoint" with json body:
-        | tag  | value |
-        | otag | 2     |
+        Given 1 maximum exception traces
+        When I send a POST request to "/api/login" with json body:
+        | email    | user@example.com |
+        | password | plainPassword    |
         Then print last JSON response

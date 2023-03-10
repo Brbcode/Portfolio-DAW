@@ -26,7 +26,8 @@ security:
         api:
             pattern: ^/api
             stateless: true
-            jwt: ~
+            jwt:
+                authenticator: app.jwt_token_authenticator
 
         main:
             lazy: true
