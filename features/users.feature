@@ -9,5 +9,7 @@ Feature:
 
     Scenario: It receives a response from Symfony's kernel
         Given no exception traces
-        When I send a GET request to "/api/asd"
+        When I send a GET request to "/api/endpoint" with json body:
+        | tag  | value |
+        | otag | 2     |
         Then print last JSON response

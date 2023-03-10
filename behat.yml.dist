@@ -3,6 +3,7 @@ default:
         default:
             contexts:
                 - App\Tests\Behat\DefaultContext
+                - App\Tests\Behat\RestContext
                 - Behat\MinkExtension\Context\MinkContext
                 - behatch:context:browser
                 - behatch:context:json

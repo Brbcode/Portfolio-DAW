@@ -8,5 +8,5 @@ Feature:
     I want to have a demo scenario
 
     Scenario: It receives a response from Symfony's kernel
-        When a demo scenario sends a request to "/"
-        Then the response should be received
+        When I send a GET request to "/api/endpoint"
+        Then print last JSON response

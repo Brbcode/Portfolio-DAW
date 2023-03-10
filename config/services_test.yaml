@@ -10,3 +10,5 @@ services:
         class: App\EventListener\DetailExceptionListener
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
+
+    Behatch\HttpCall\Request: ~
