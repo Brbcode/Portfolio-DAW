@@ -21,6 +21,7 @@ security:
             custom_authenticators: [ App\Security\LoginAuthenticator ]
             json_login:
                 check_path: /api/login
+                username_path: email
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
