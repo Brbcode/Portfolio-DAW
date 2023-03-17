@@ -2,7 +2,7 @@
 @import '../../../styles/mixins';
 
 #root{
-  header{
+  > header{
     font-size: 1.4rem;
     position: fixed;
     z-index: z('site-header');

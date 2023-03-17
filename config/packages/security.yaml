@@ -18,7 +18,7 @@ security:
         login:
             pattern: ^/api/login
             stateless: true
-            custom_authenticators: [ App\Security\LoginAuthenticator ]
+#            custom_authenticators: [ App\Security\LoginAuthenticator ]
             json_login:
                 check_path: /api/login
                 username_path: email
@@ -28,8 +28,8 @@ security:
         api:
             pattern: ^/api
             stateless: true
-            jwt:
-                authenticator: app.jwt_token_authenticator
+            jwt: ~
+#                authenticator: app.jwt_token_authenticator
 
         main:
             lazy: true

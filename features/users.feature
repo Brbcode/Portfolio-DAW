@@ -7,9 +7,16 @@ Feature:
     As a user
     I want to have a demo scenario
 
-    Scenario: It receives a response from Symfony's kernel
-        Given 1 maximum exception traces
+    Scenario: User successful login
         When I send a POST request to "/api/login" with json body:
         | email    | user@example.com |
         | password | plainPassword    |
+        Then the JSON node "username" should be equal to "Test user"
+        And the JSON node "token" should exist
+
+    Scenario: User login with bad credentials
+        Given 1 maximum exception traces
+        When I send a POST request to "/api/login" with json body:
+            | email    | user@example.com |
+            | password | plainPasswordasd    |
         Then print last JSON response

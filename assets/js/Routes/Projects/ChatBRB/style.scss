@@ -1,0 +1,120 @@
+@import '../../../../styles/theme';
+
+#chatbrb{
+  --chatbrb-aside-w: 424px;
+  position: relative;
+  overflow: hidden;
+  //noinspection CssInvalidPropertyValue
+  height: calc( 100vh - theme_var('header-height') - theme_var('footer-height') );
+  border-top: 1px solid #888;
+
+  > aside {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--chatbrb-aside-w);
+    height: 100%;
+    border-right: 1px solid #888;
+
+    header{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0.5em;
+      background: theme_var('primary-color');
+      gap: 0.5em;
+    }
+
+    .chats{
+      flex-grow: 1;
+      padding: 0.5em;
+
+      .chat{
+        display: grid;
+        grid-template-areas: 'avatar name date'
+          'avatar comment counter';
+        grid-template-columns: min-content auto 50px;
+        gap: 0.5em;
+        margin-bottom: 0.5em;
+
+        .avatar{
+          grid-area: avatar;
+        }
+
+        .name{
+          grid-area: name;
+        }
+
+        .date{
+          grid-area: date;
+          margin-left: auto;
+        }
+
+        .comment{
+          grid-area: comment;
+        }
+
+        .counter{
+          grid-area: counter;
+        }
+
+      }
+
+    }
+
+
+  }
+
+  .chat-view{
+    position: absolute;
+    top: 0;
+    left: var(--chatbrb-aside-w);
+    width: calc(100vw - var(--chatbrb-aside-w) - 1px);
+    height: 100%;
+  }
+
+
+  &.skeleton{
+    .rect{
+      flex-grow: 1;
+      opacity: 0.6;
+      animation: gradient-keys 3s linear infinite;
+      animation-direction: reverse;
+      background: linear-gradient(90deg, rgb(197, 197, 197) 0%, rgb(255, 255, 255) 20%, rgb(197, 197, 197) 46%);
+      background-size: 200%;
+
+    }
+
+    .round{
+      border-radius: 0.5em;
+    }
+
+    .circle {
+      border-radius: 100%;
+    }
+
+    .chat-view{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@keyframes gradient-keys {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 200%;
+  }
+}
+
+@include mq('tablet-small'){
+  #chatbrb{
+    > aside{
+      background: theme_var('primary-color');
+    }
+  }
+}

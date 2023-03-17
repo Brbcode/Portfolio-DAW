@@ -41,9 +41,19 @@ services:
         tags:
             - { name: 'security.authenticator' }
 
-    app.jwt_token_authenticator:
-        class: App\Security\JwtTokenAuthenticator
-        parent: lexik_jwt_authentication.security.jwt_authenticator
+#    app.jwt_token_authenticator:
+#        class: App\Security\JwtTokenAuthenticator
+#        parent: lexik_jwt_authentication.security.jwt_authenticator
+
+    app.event.jwt_success_authentication:
+        class: App\EventListener\JWTEventListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+
+    app.event.jwt_failure_authentication:
+        class: App\EventListener\JWTEventListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_failure, method: onAuthenticationFailureResponse }
 
     App\Fixtures\Processors\UserProcessor:
         class: App\Fixtures\Processors\UserProcessor

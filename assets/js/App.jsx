@@ -10,6 +10,7 @@ export default class App extends React.Component {
   render() {
     return (
       <>
+        <section id="notification-wrapper" />
         <section id="modal-wrapper" />
         <Header />
         <main>

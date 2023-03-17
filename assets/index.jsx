@@ -14,6 +14,7 @@ const FatalError = React.lazy(() => import('./js/Routes/FatalError/FatalError'))
 const NotFound = React.lazy(() => import('./js/Components/NotFound/NotFound'));
 const Home = React.lazy(() => import('./js/Routes/Home'));
 const Projects = React.lazy(() => import('./js/Routes/Projects/Projects'));
+const ChatBrb = React.lazy(() => import('./js/Routes/Projects/ChatBRB/ChatBrb'));
 
 const router = createBrowserRouter([
   {
@@ -30,8 +31,8 @@ const router = createBrowserRouter([
         element: <Projects />,
       },
       {
-        path: 'route1',
-        element: <RouteExample routeID={1} />,
+        path: 'chatbrb',
+        element: <ChatBrb />,
       },
       {
         path: 'route2',
