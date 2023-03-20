@@ -12,7 +12,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: var(--chatbrb-aside-w);
     height: 100%;
     border-right: 1px solid #888;
 
@@ -68,7 +67,7 @@
   .chat-view{
     position: absolute;
     top: 0;
-    left: var(--chatbrb-aside-w);
+    left: 100vw;
     width: calc(100vw - var(--chatbrb-aside-w) - 1px);
     height: 100%;
   }
@@ -114,7 +113,12 @@
 @include mq('tablet-small'){
   #chatbrb{
     > aside{
+      max-width: var(--chatbrb-aside-w);
       background: theme_var('primary-color');
+    }
+
+    .chat-view{
+      left: var(--chatbrb-aside-w);
     }
   }
 }

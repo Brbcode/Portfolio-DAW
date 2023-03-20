@@ -62,7 +62,7 @@ $theme-vars: (
   'footer-height': 45px,
   'body-color': #212529,
   'primary-color': #1b1a2e,
-  'active-color': #d4e4fe,
+  'active-color': #7daeff,
   'active-text-color': #181a27,
   'primary-font-color': #fff,
   'primary-em-font-color': #be50f4,
@@ -101,4 +101,8 @@ $theme-vars: (
   padding: 0.2em 1.5em;
   border-radius: 1em;
   background: theme_var('primary-em-font-color');
+}
+
+.link{
+  color: theme_var('active-color');
 }

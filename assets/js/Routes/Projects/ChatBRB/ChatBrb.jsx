@@ -4,8 +4,11 @@ import classNames from 'classnames';
 import { faExpand } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SVG from 'react-inlinesvg';
+import { createPortal } from 'react-dom';
 import BurgerButton from '../../../Components/BurgerButton/BurgerButton';
 import loaderIcon from './loader.svg';
+
+const SignIn = React.lazy(() => import('../../../Components/SignIn/SignIn'));
 
 function ChatBrbSkeleton() {
   return (
@@ -57,13 +60,23 @@ function ChatBrbSkeleton() {
 
 function ChatBrb() {
   const [user, setUser] = useState(null);
+  const [modal, setModal] = useState(null);
 
   useEffect(() => {
+    setModal(document.getElementById('modal-wrapper'));
 
+    if (sessionStorage.getItem('token') === null) {
+      // TODO
+    }
+
+    return (() => {
+      // modal.classList.remove('active');
+    });
   });
 
   return (
     <div id="chatbrb" className={classNames({ skeleton: user === null })}>
+      { user === null && modal !== null && createPortal(<SignIn />, modal)}
       {user !== null ? 'h1' : <ChatBrbSkeleton />}
     </div>
   );
